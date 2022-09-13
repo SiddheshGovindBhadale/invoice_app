@@ -1,0 +1,47 @@
+.table_responsive {
+  padding:35px 17px;
+  background-color:#fff;
+  border-radius:15px;
+}
+
+.overflow {
+  overflow-x:auto;
+}
+
+table{
+  background-color:#fff;
+  border-radius:5px;
+}
+
+.head {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+	margin-bottom: 15px;
+}
+
+table tr td .status {
+	font-size: 10px;
+	padding: 6px 16px;
+	color: var(--light);
+	border-radius: 20px;
+	font-weight: 700;
+}
+
+table tr td .status.completed {
+	background: var(--blue);
+	margin-right:0px;
+	margin-right:2px;
+}
+table tr td .status.process {
+	background: var(--yellow);
+}
+table tr td .status.pending {
+	background: var(--orange);
+}
+
+.action{
+  display:flex;
+  justify-content:center;
+  justify-content:flex-start;
+}

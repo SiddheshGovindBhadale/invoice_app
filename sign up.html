@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+     <!-- Boxicons -->
+     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+     <!-- icon -->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!-- bootstrap css-->
+     <link href="bootstrap/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet" />
+     <!-- table css-->
+     <link href="css/table3.css" rel="stylesheet">
+      <!-- form css-->
+     <link rel="stylesheet" href="css/login.css">
+     <!--nav css-->
+     <link rel="stylesheet" href="css/navbar.css">
+<title>User Sign up</title>
+
+<style type="text/css">
+   .block {
+      height:65px;
+   }
+</style>
+</head>
+<body>
+     <!-- Mobile Menu Starts -->
+     <nav role="navigation" class="d-block">
+     <div id="menuToggle">
+     <h1>INVOICE</h1>
+     <div class="myBtn" onclick="toggle()">
+     <span></span>
+     </div>
+     </div>
+     <ul class="list-unstyled" id="menu">
+     <li><a href="myinvoice.html"><i class="bx bxs-dashboard"></i><span>Dashboard</span></a></li><hr>
+     <li><a href="sign up.html"><i class="fa fa-user"></i><span>Users</span></a></li><hr>
+     <li><a href="invoice.html"><i class="fa fa-folder-open"></i><span>Invoice</span></a></li>
+     </ul>
+     </nav>
+     <div class="block" ></div>
+     </nav>
+     
+<section class="container" id="innerH" >
+     <form class="login-form" id="form" >
+         <div class="login-form__content">
+              <div class="login-form__header">Add New User</div>
+              <input class="login-form__input" type="text" name="dc_username" placeholder="User No" id="no">
+              <input class="login-form__input" type="text" name="dc_username" placeholder="Username" id="name">
+              <button class="login-form__button">Sign up</button>
+              <div class="login-form__links">
+              </div>
+         </div>
+     </form>
+     
+     <div class="table_responsive">
+          <div class="head">
+               <h3>Users</h3>
+          </div>
+          <table class="table">
+               <thead>
+                    <tr>
+                       <th scope="col">No</th>
+                       <th scope="col">Name</th>
+                       <th scope="col">Action</th>
+                    </tr>
+               </thead>
+               <tbody></tbody>
+          </table>
+     </div>
+</section>
+
+<!-- user update form -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color:var(--orange);">Update User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form class="login-form" id="form" >
+               <div class="login-form__content">
+                   <input class="login-form__input" type="text" name="dc_username" placeholder="User No" id="updateNo">
+                   <input class="login-form__input" type="text" name="dc_username" placeholder="Username" id="updateName">
+               </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn" id="patchBtn" style="background-color:var(--orange); color:white;" >Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- bootstrap JavaScript file -->
+<script src="bootstrap/bootstrap-5.1.0-dist/js/bootstrap.bundle.min.js"></script>
+<!-- fontawsome JavaScript file -->
+<script src="https://kit.fontawesome.com/1166998299.js" crossorigin="anonymous"></script>
+<!-- Sign up script -->
+<script src="./js/signUp.js"></script>
+<!-- update script -->
+<script src="./js/update.js"></script>
+
+
+<script type="text/javascript">
+
+let btn = document.querySelector(".myBtn")
+let menu = document.querySelector(".list-unstyled")
+let opened = false
+
+function toggle(){
+   console.log("toggle")
+   if(!opened){
+     menu.classList.add('open')
+     btn.classList.add('anime')
+     opened = true
+   }else{
+     menu.classList.remove('open')
+     btn.classList.remove('anime')
+     opened = false
+   }
+}
+
+</script>
+</body>
+</html>

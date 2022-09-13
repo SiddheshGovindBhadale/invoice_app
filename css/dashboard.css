@@ -1,0 +1,22 @@
+.container {
+  border:2px solid black;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.box {
+  border:2px solid black;
+  height:150px;
+  width:150px;
+  margin:5px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+
+.box span{
+  font-size:1.2rem;
+}

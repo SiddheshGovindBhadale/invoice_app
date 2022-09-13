@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        
+<!-- icon -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- bootstrap css-->
+<link href="bootstrap/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet" />
+<!--nav css-->
+<link rel="stylesheet" href="css/nav.css">
+<!--dashboard css-->
+<link rel="stylesheet" href="css/dashboard.css">
+
+<title></title>
+</head>
+<body>
+<nav class="top" ></nav>
+     <nav class="nav">
+          <a href="index.html" class="nav__link nav__link--active">
+             <i class="material-icons nav__icon">dashboard</i>
+             <span class="nav__text">Dashboard</span>
+          </a>
+          <a href="sign up.html" class="nav__link">
+             <i class="material-icons nav__icon fas fa-user"></i>
+             <span class="nav__text">Users</span>
+          </a>
+          <a href="invoice.html" class="nav__link">
+             <i class=" material-icons nav__icon fas fa-file-invoice"></i>
+             <span class="nav__text">Invoice</span>
+          </a>
+     </nav>
+     
+<section class="container" >
+       <div class="box"  >
+            <h5 id="Users">0</h5>
+            <h5>Users</h5>
+       </div>
+       <div class="box" >
+            <h5 id="Total">₹0</h5>
+            <h5>Total</h5>
+       </div>
+       <div class="box"  >
+            <h5 id="Paid">₹0</h5>
+            <h5>Paid</h5>
+       </div>
+       <div class="box"  >
+            <h5 id="Remaining">₹0</h5>
+            <h5>Remaining</h5>
+       </div>
+</section>
+<div class="space" ></div>
+</body>
+<!-- bootstrap JavaScript file -->
+<script src="bootstrap/bootstrap-5.1.0-dist/js/bootstrap.bundle.min.js"></script>
+<!-- fontawsome JavaScript file -->
+<script src="https://kit.fontawesome.com/1166998299.js" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+let invoiceUrl = "http://localhost:3000/api/invoice"
+let userUrl = "http://localhost:3000/api/users";
+let onUser = document.getElementById("Users")
+let onTotal = document.getElementById("Total")
+let onPaid = document.getElementById("Paid")
+let onRemainig = document.getElementById("Remaining")
+cal()
+
+function cal(){
+   fetch(invoiceUrl)
+       .then(res => res.json())
+       .then(data => {
+            let total = 0
+            let paid = 0
+            let Remaining = 0
+            
+            data.forEach(function(item,index){
+               if(Array.isArray(item.product)){
+                   item.product.forEach(function(elem){
+                        total  += Number(elem.price)*Number(elem.quantity)
+                        paid += Number(elem.paid)
+                        Remaining = total - paid
+                       // console.log(elem.paid)
+                   })
+               }
+            })
+            onUser.innerHTML = data.length
+            onTotal.innerHTML = "₹"+total
+            onPaid.innerHTML = "₹"+paid
+            onRemainig.innerHTML = "₹"+Remaining
+       })
+       .catch((e)=>{
+       console.log(e)
+       })
+}
+</script>
+
+</html>

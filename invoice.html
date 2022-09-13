@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+     <!-- Boxicons -->
+     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+     <!-- icon -->
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+     <!-- bootstrap css-->
+     <link href="bootstrap/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet" />
+     <!-- table css-->
+     <link href="css/table.css" rel="stylesheet">
+     <!--nav css-->
+     <link rel="stylesheet" href="css/navbar.css">
+<title>add product</title>
+<style type="text/css">
+
+body{
+  background-color:#fff;
+}
+
+.block{
+  height:65px;
+}
+
+main {
+	width: 100%;
+	padding: 36px 24px;
+	font-family: var(--poppins);
+	max-height: calc(100vh - 56px);
+	overflow-y: auto;
+}
+
+.form{
+  background-color:#eeeeee;
+  padding:15px 5px;
+  border-radius:5px;
+}
+
+.searchbar {
+    width: 100%;
+    max-width: 300px;
+    display: inline-flex;
+    margin:10px 10px;
+}
+
+.searchbar--max-width {
+    max-width: 100%;
+}
+
+.searchbar__input {
+    flex-grow: 1;
+    padding: 10px;
+    outline: none;
+    border: 1px solid var(--orange);
+    border-radius: 5px 0 0 5px;
+    background: #fff6f2;
+    transition: background 0.25s, box-shadow 0.25s;
+}
+
+.searchbar__input:focus {
+    background: white;
+    box-shadow: 0 0 2px #8CC6BA;
+}
+
+.searchbar__input::placeholder {
+    color: var(--orange);
+}
+
+.searchbar__button {
+    width: 40px;
+    background:var(--orange);
+    color: #ffffff;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.searchbar__button:active {
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
+}
+
+form{
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+  padding:20px 10px;
+  margin:5px;
+  border-radius:5px;
+}
+
+form select {
+  margin-top:10px;
+}
+
+#patch{
+  background-color:var(--orange);
+  color:#fff;
+  padding:6px 35px;
+  margin-left:15px;
+  text-transform:uppercase;
+  border:2px solid var(--orange);
+  border-radius:5px;
+}
+
+#patch:hover , .action_btn a:hover {
+  background-color:transparent;
+  color:var(--orange);
+  border:2px solid var(--orange);
+}
+
+.action_btn a{
+  background-color:var(--orange);
+  color:#fff;
+  padding:5px 10px;
+  text-transform:uppercase;
+  border:2px solid var(--orange);
+  border-radius:5px;
+}
+
+</style>
+</head>
+<body>
+
+   <!-- Mobile Menu Starts -->
+   <nav role="navigation" class="d-block">
+       <div id="menuToggle">
+           <h1>INVOICE</h1>
+           <div class="myBtn" onclick="toggle()">
+               <span></span>
+           </div>
+       </div>
+       <ul class="list-unstyled" id="menu">
+           <li><a href="myinvoice.html"><i class="bx bxs-dashboard"></i><span>Dashboard</span></a></li><hr>
+           <li><a href="sign up.html"><i class="fa fa-user"></i><span>Users</span></a></li><hr>
+           <li><a href="invoice.html"><i class="fa fa-folder-open"></i><span>Invoice</span></a></li>
+       </ul>
+   </nav>
+   <div class="block"></div>
+
+<main>
+
+<div class="searchbar">
+        <input type="text" class="searchbar__input" name="q" placeholder="Search Invoice" id="search" >
+        <a href="#table" id="searchBtn"  class="searchbar__button">
+            <i class="fas fa-search"></i>
+        </a>
+</div>
+
+<div class="form" >
+<form>
+<div class="row g-3 mb-2">
+  <div class="col">
+     <input type="text" class="form-control" id="No"  placeholder="No" aria-label="no">
+  </div>
+  <div class="col">
+    <input type="text" class="form-control" id="quantity"  placeholder="Quantity" aria-label="First name">
+  </div>
+</div>
+<div class="row g-3">
+  <div class="col">
+    <input type="text" class="form-control" id="price" placeholder="price" aria-label="Last name">
+  </div>
+  <div class="col">
+    <input type="text" class="form-control" id="paid" placeholder="Paid" aria-label="Last name">
+  </div>
+</div>
+
+<select class="form-select" id="product"  aria-label="Default select example">
+  <option selected>Product</option>
+  <option value="one">One</option>
+  <option value="two">Two</option>
+  <option value="three">Three</option>
+</select>
+</form>
+
+<button type="button" id="patch" onclick="patch()">add</button>
+</div>
+
+
+<table class="mt-5 mb-3 table" id="noName" >
+
+</table>
+
+<div class="table_responsive" id="table" >
+<table class="table">
+  <thead>
+    
+  </thead>
+  <tbody id="tData"></tbody>
+</table>
+</div>
+
+<table class="mt-2 mb-3 table" id="total" >
+    
+</table>
+</div>
+</main>
+</body>
+      
+<!-- bootstrap JavaScript file -->
+<script src="bootstrap/bootstrap-5.1.0-dist/js/bootstrap.bundle.min.js"></script>
+<!-- fontawsome JavaScript file -->
+<script src="https://kit.fontawesome.com/1166998299.js" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript">
+
+let searchBtn = document.getElementById("searchBtn")
+let btn = document.querySelector(".myBtn")
+let menu = document.querySelector(".list-unstyled")
+let opened = false
+
+function toggle(){
+   console.log("toggle")
+   if(!opened){
+     menu.classList.add('open')
+     btn.classList.add('anime')
+     opened = true
+   }else{
+     menu.classList.remove('open')
+     btn.classList.remove('anime')
+     opened = false
+   }
+}
+
+
+
+
+ let thead = document.querySelector("thead")
+ let tbody = document.getElementById("tData")
+ let noName = document.getElementById("noName")
+ let total = document.getElementById("total")
+ let date = new Date();
+ let today = date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear();
+ let url = "http://localhost:3000/api/invoice"
+ let no = document.getElementById("No")
+ let price = document.getElementById("price")
+ let quantity = document.getElementById("quantity")
+ let productName = document.getElementById("product")
+ let paid = document.getElementById("paid")
+ let search = document.getElementById("search")
+ 
+ 
+ userData()
+ 
+// Get user data from server and post in product
+function userData(){
+  let url1 = "http://localhost:3000/api/users"
+  
+  fetch(url1)
+    .then(res => res.json())
+    .then(data => {
+          let user = data
+          fetch(url)
+             .then(res => res.json())
+             .then(data => {
+                  let user2 = data
+                  
+                  // get new user
+                  for( var i=user.length - 1; i>=0; i--){
+                      for( var j=0; j<user2.length; j++){
+                          if(user[i] && (user[i].No === user2[j].No)){
+                              user.splice(i, 1);
+                          }
+                      }
+                  }
+                  
+                  // post new user
+                  user.forEach(function(item,index){
+                        let obj = {
+                           No:item.No,
+                           name:item.name
+                         }
+                         fetch(url , {
+                           method: 'POST',
+                           headers:{
+                                   'Content-Type': 'application/json'
+                           },
+                           body: JSON.stringify(obj),
+                         })
+                         .then(res => res.json())
+                         .then(data => {})
+                         .catch(error => {
+                               console.log(error);
+                         });
+                 })
+             })
+             .catch((e)=>{
+                console.log(e)
+             })
+    })
+    .catch((e)=>{
+          console.log(e)
+    })
+}
+  
+
+//search
+function searchInvoice(valu){
+  showData(valu)
+}
+
+search.addEventListener("input" , function(){
+      searchInvoice(search.value)
+})
+
+searchBtn.addEventListener("click" , function(){
+      searchInvoice(search.value)
+})
+
+ 
+// product showData function
+function showData(num){
+    let heading = ""
+    let Data = "" ;
+    let userdata ="" ;
+    let userTotal = "" ;
+    let addition = 0 ;
+    let paidVal = 0 ; 
+    
+    /*get request*/
+    fetch(url)
+       .then(res => res.json())
+       .then(data => {
+            let index = data.findIndex(function(item , index){
+                return item.No == num;
+            })
+            
+            
+            let id = data[index]._id; 
+            
+            
+            userdata += `
+                <tr>
+                  <th scope="col">No</th>
+                  <td>${data[index].No}</td>
+                </tr>
+                <tr>
+                  <th scope="col">Name</th>
+                  <td>${data[index].name}</td>
+                </tr> `
+            
+            noName.innerHTML = userdata
+            
+            let productArr = data[index].product
+            productArr.forEach(function(item,index){
+                 
+                 heading = `
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Paid</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                 `
+                 Data += `
+                      <tr>
+                         <td>${index + 1}</td>
+                         <td>${item.date}</td>
+                         <td>${item.productName}</td>
+                         <td>${item.quantity}</td>
+                         <td>₹${item.price}</td>
+                         <td>₹${item.paid}</td>
+                         <td>
+                             <span class="action_btn" data-id=${index}>
+                                  <a href="#!" id="${index}" onclick="return remove(this.id)"><i class="far fa-trash-alt"></i></a>
+                             </span>
+                         </td>
+                      </tr>`; 
+                      
+                   addition += Number(item.price )*Number( item.quantity)
+                   paidVal += Number(item.paid)
+                   let remaining = addition - paidVal
+                   
+                   userTotal = `
+                   <tr>
+                      <th scope="col">total</th>
+                      <td>₹${addition}</td>
+                   </tr>
+                   <tr>
+                      <th scope="col">paid</th>
+                      <td>₹${paidVal}</td>
+                   </tr>
+                   <tr>
+                      <th scope="col">remaining</th>
+                      <td>₹${remaining}</td>
+                   </tr>`
+                   
+                  })
+                  
+                  thead.innerHTML = heading
+                  tbody.innerHTML = Data;
+                  total.innerHTML = userTotal
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
+}
+ 
+// add product
+function patch(){
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            let index = data.findIndex(function(item , index){
+                return item.No == no.value;
+            })
+            
+            let id = data[index]._id; 
+            let productArr = data[index].product
+            
+            if(productArr == undefined){
+               productArr = [];
+            }
+            
+            let productData = {
+                               date:today,
+                               quantity:quantity.value,
+                               price:price.value,
+                               paid:paid.value,
+                               productName:productName.value
+                              }
+            
+            productArr.push(productData)
+            let obj = {
+                product:productArr
+            }
+            fetch(`${url}/${id}` , {
+                method: 'PATCH',
+                headers:{
+                      'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(obj),
+             })
+              .then(res => res.json())
+              .then(data => {showData(no.value)})
+             .catch(error => {
+                 console.log(error);
+             });
+            
+      })
+      .catch(error => {
+           console.log(error);
+      });
+}
+
+
+// delete function
+function remove(index){
+   fetch(url)
+   .then(res => res.json())
+   .then(data => {
+         let proIndex = data.findIndex(function(item , index){
+            return item.No == search.value || item.No == no.value;
+         })
+         
+         let i = data[proIndex]._id; 
+         let productArr = data[proIndex].product
+   
+   productArr.splice(index,1);
+   let obj = {
+       product:productArr
+   }
+   
+   fetch(`${url}/${i}` , {
+         method: 'PATCH',
+         headers:{
+              'Content-Type': 'application/json'
+         },
+         body: JSON.stringify(obj),
+   })
+   .then(res => res.json())
+   .then(data => {
+         showData(search.value)
+         showData(no.value)
+   })
+   .catch(error => {
+         console.log(error);
+   });
+   
+   
+   })
+   .catch(error => {
+   console.log(error);
+   });
+   
+}
+
+
+  
+  
+  
+</script>
+</html>

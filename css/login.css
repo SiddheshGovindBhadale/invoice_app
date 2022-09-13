@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap');
+
+a{
+  text-decoration:none;
+}
+
+.login-form,
+.login-form * {
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro';
+}
+
+.login-form {
+    max-width: 350px;
+    margin: 30px auto;
+    border-radius: 5px;
+    overflow: hidden;
+    /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);*/
+}
+
+.login-form__logo-container {
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.login-form__logo {
+    display: block;
+    max-width: 125px;
+    margin: 0 auto;
+}
+
+.login-form__content {
+    padding: 30px;
+}
+
+.login-form__header {
+    margin-bottom: 15px;
+    text-align: center;
+    color: #333333;
+}
+
+.login-form__input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #dddddd;
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.5s;
+}
+
+.login-form__input:focus {
+    border-color: var(--orange);
+}
+
+.login-form__input::placeholder {
+    color: #aaaaaa;
+}
+
+.login-form__button {
+    padding: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    background: var(--orange);
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-form__button:active {
+    background: #008067;
+}
+
+.login-form__links {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.login-form__link {
+    font-size: 0.9em;
+    color: #008067;
+    text-decoration: none;
+}
+
+nav.top{
+  background-color:#1a253f;
+  padding:1.6rem 0;
+}
+
+.searchbar {
+    width: 100%;
+    max-width: 300px;
+    display: inline-flex;
+    margin:10px 10px;
+}
+
+.searchbar--max-width {
+    max-width: 100%;
+}
+
+.searchbar__input {
+    flex-grow: 1;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #009879;
+    border-radius: 5px 0 0 5px;
+    background: #F4FAF9;
+    transition: background 0.25s, box-shadow 0.25s;
+}
+
+.searchbar__input:focus {
+    background: white;
+    box-shadow: 0 0 2px #8CC6BA;
+}
+
+.searchbar__input::placeholder {
+    color: #8CC6BA;
+}
+
+.searchbar__button {
+    width: 40px;
+    background: #009879;
+    color: #ffffff;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.searchbar__button:active {
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
+}
+
+form{
+  display:flex;
+  flex-direction: column;
+  background-color:#fff;
+  justify-content:center;
+  align-items:center;
+  padding:20px 10px;
+  margin:5px;
+  border-radius:5px;
+}
+
+form select {
+  margin-top:10px;
+}
+
+form #patch{
+  margin-left:7px;
+}

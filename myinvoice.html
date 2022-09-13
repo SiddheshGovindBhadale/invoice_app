@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Boxicons -->
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<!-- icon -->
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<!-- bootstrap css-->
+<link href="bootstrap/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet" />
+<!-- nav styling -->
+<link href="./css/navbar.css" rel="stylesheet" >
+<!-- table3 styling -->
+<link href="./css/table3.css" rel="stylesheet" >
+<!-- form css-->
+<link rel="stylesheet" href="css/login.css">
+     
+<title>Invoice app</title>
+<style type="text/css">
+main {
+	width: 100%;
+	padding: 36px 24px;
+	font-family: var(--poppins);
+	max-height: calc(100vh - 56px);
+	overflow-y: auto;
+}
+
+main ul{
+    padding-left:0px !important;
+}
+
+.box-info {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	grid-gap: 24px;
+	margin-top: 36px;
+}
+ .box-info li {
+	padding: 24px;
+	background: var(--light);
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	grid-gap: 24px;
+}
+.box-info li .bx {
+	width: 80px;
+	height: 80px;
+	border-radius: 10px;
+	font-size: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.box-info li:nth-child(1) .bx {
+	background: var(--light-yellow);
+	color: var(--yellow);
+}
+.box-info li:nth-child(3) .bx {
+	background: var(--light-green);
+	color: var(--green);
+}
+.box-info li:nth-child(2) .bx {
+	background: var(--light-blue);
+	color: var(--blue);
+}
+.box-info li:nth-child(4) .bx {
+	background: var(--light-orange);
+	color: var(--orange);
+}
+.box-info li .text h3 {
+	font-size: 24px;
+	font-weight: 600;
+	color: var(--dark);
+}
+.box-info li .text p {
+	color: var(--dark);	
+}
+
+
+
+</style>
+</head>
+<body>
+   <!-- Mobile Menu Starts -->
+   <nav role="navigation" class="d-block">
+       <div id="menuToggle">
+           <h1>INVOICE</h1>
+           <div class="myBtn" onclick="toggle()">
+               <span></span>
+           </div>
+       </div>
+       <ul class="list-unstyled" id="menu">
+           <li><a href="index.html"><i class="bx bxs-dashboard"></i><span>Dashboard</span></a></li><hr>
+           <li><a href="sign up.html"><i class="fa fa-user"></i><span>Users</span></a></li><hr>
+           <li><a href="invoice.html"><i class="fa fa-folder-open"></i><span>Invoice</span></a></li>
+       </ul>
+   </nav>
+   <div class="block" ></div>
+<main>
+
+<ul class="box-info">
+				<li>
+			      	<i class='bx bxs-group' ></i>
+				    <span class="text">
+				        <h3 id="Users">0</h3>
+				        <p>Users</p>
+				    </span>
+				</li>
+				<li>
+			      	<i class='bx bxs-dollar-circle' ></i>
+				    <span class="text">
+				        <h3 id="Total">₹0</h3>
+				        <p>Total Sales</p>
+				    </span>
+				</li>
+				<li>
+					<i class='bx bxs-calendar-check' ></i>
+					<span class="text">
+						<h3 id="Paid">₹0</h3>
+						<p>Total Paid</p>
+					</span>
+				</li>
+				<li>
+				    <i class='bx bxs-error-circle' ></i>
+			      	<span class="text">
+			        	<h3 id="Remaining">₹0</h3>
+				        <p>Total Remaining</p>
+				    </span>
+				</li>
+			</ul>
+
+
+            <div class="table_responsive">
+                 <div class="head">
+                      <h3>Users</h3>
+                 </div>
+                 <div class="overflow" >
+                     <table class="table">
+                         <thead>
+                              <tr>
+                                 <th scope="col">No</th>
+                                 <th scope="col">Name</th>
+                                 <th scope="col">Total</th>
+                                 <th scope="col">Paid</th>
+                                 <th scope="col">Remaining</th>
+                                 <th scope="col">Action</th>
+                             </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+</main>
+
+
+<!-- user update form -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color:var(--orange);">Update User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form class="login-form" id="form" >
+               <div class="login-form__content">
+                   <input class="login-form__input" type="text" name="dc_username" placeholder="User No" id="updateNo">
+                   <input class="login-form__input" type="text" name="dc_username" placeholder="Username" id="updateName">
+               </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn" id="patchBtn" style="background-color:var(--orange); color:white;" >Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="./js/total.js"></script>
+<script src="./js/invoice.js"></script>
+<script src="./js/update.js"></script>
+<!-- bootstrap JavaScript file -->
+<script src="bootstrap/bootstrap-5.1.0-dist/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript">
+
+let btn = document.querySelector(".myBtn")
+let menu = document.querySelector(".list-unstyled")
+let opened = false
+
+function toggle(){
+   console.log("toggle")
+   if(!opened){
+     menu.classList.add('open')
+     btn.classList.add('anime')
+     opened = true
+   }else{
+     menu.classList.remove('open')
+     btn.classList.remove('anime')
+     opened = false
+   }
+}
+
+</script>
+</body>
+</html>
